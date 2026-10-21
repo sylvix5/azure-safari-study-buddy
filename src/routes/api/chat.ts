@@ -56,6 +56,7 @@ export const Route = createFileRoute("/api/chat")({
         if (!thread) return Response.json({ error: "Topic not found" }, { status: 404 });
 
         const last = messages[messages.length - 1];
+        if (!last) return Response.json({ error: "Invalid request" }, { status: 400 });
         if (last.role === "user") {
           const { error } = await supabase.from("messages").upsert(
             { thread_id: threadId, user_id: userId, message_id: last.id, role: "user", parts: last.parts as unknown as Json },
