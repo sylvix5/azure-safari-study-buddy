@@ -1,2 +1,2 @@
-- [ ] Answer GitHub/download question (answered in chat)
-- [ ] Verify chat flow end-to-end (signup, thread, AI reply, reload)
+- [x] Answer GitHub/download question (answered in chat)
+- [x] Verify chat flow end-to-end (signup, thread, AI reply, reload)
