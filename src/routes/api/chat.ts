@@ -13,8 +13,8 @@ import { buildTutorPrompt, type StudyLanguage } from "@/lib/ai/tutor-prompt.serv
 const LANGS: StudyLanguage[] = ["english", "swahili", "sheng"];
 
 function userClient(token: string) {
-  const url = process.env.SUPABASE_URL!;
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
+  const url = process.env["SUPABASE_URL"]!;
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
   return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     global: {
@@ -56,6 +56,7 @@ export const Route = createFileRoute("/api/chat")({
         if (!thread) return Response.json({ error: "Topic not found" }, { status: 404 });
 
         const last = messages[messages.length - 1];
+        if (!last) return Response.json({ error: "Invalid request" }, { status: 400 });
         if (last.role === "user") {
           const { error } = await supabase.from("messages").upsert(
             { thread_id: threadId, user_id: userId, message_id: last.id, role: "user", parts: last.parts as unknown as Json },
@@ -70,7 +71,7 @@ export const Route = createFileRoute("/api/chat")({
           await supabase.from("threads").update(update).eq("id", threadId);
         }
 
-        const apiKey = process.env.LOVABLE_API_KEY;
+        const apiKey = process.env["LOVABLE_API_KEY"];
         if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
         const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
         const provider = createOpenAI({

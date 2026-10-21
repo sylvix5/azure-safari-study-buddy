@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Chat architecture
+- Chat uses a TanStack server route `/api/chat` (streaming, bearer-token auth) + `threads`/`messages` tables; never convert it to a buffered server function or an Edge Function.
