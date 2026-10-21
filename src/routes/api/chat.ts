@@ -13,8 +13,8 @@ import { buildTutorPrompt, type StudyLanguage } from "@/lib/ai/tutor-prompt.serv
 const LANGS: StudyLanguage[] = ["english", "swahili", "sheng"];
 
 function userClient(token: string) {
-  const url = process.env.SUPABASE_URL!;
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
+  const url = process.env["SUPABASE_URL"]!;
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
   return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     global: {
@@ -71,7 +71,7 @@ export const Route = createFileRoute("/api/chat")({
           await supabase.from("threads").update(update).eq("id", threadId);
         }
 
-        const apiKey = process.env.LOVABLE_API_KEY;
+        const apiKey = process.env["LOVABLE_API_KEY"];
         if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
         const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
         const provider = createOpenAI({
