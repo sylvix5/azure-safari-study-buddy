@@ -52,10 +52,10 @@ function PracticePage() {
   }
 
   const q = questions[index];
-  const done = index >= questions.length;
+  const done = !q;
 
   function pick(i: number) {
-    if (picked !== null) return;
+    if (!q || picked !== null) return;
     setPicked(i);
     setAnsweredCount((n) => n + 1);
     if (i === q.answer) setScore((s) => s + 1);
