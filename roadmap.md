@@ -1,3 +1,1 @@
-- [x] Build Mwalimu Cloud chat (threads, AI tutor, languages) — verified
-- [x] Answer GitHub/download question
-- [ ] Add a practice-questions section (quiz page with AZ-900-style questions, instant feedback)
+- [x] Add a practice-questions section (quiz page with AZ-900-style questions, instant feedback) — verified
