@@ -61,9 +61,14 @@ function ChatLayout() {
           <img src={logo} alt="" width={36} height={36} className="h-9 w-9 rounded-full bg-sidebar-foreground p-1" />
           <span className="font-display text-lg font-bold">Mwalimu Cloud</span>
         </div>
-        <div className="px-3">
+        <div className="grid grid-cols-[1fr_auto] gap-2 px-3">
           <Button onClick={newTopic} className="w-full justify-start gap-2 bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">
             <Plus className="h-4 w-4" /> New topic
+          </Button>
+          <Button asChild variant="outline" className="justify-start gap-2 border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent/60">
+            <Link to="/practice">
+              <GraduationCap className="h-4 w-4" /> Practice
+            </Link>
           </Button>
         </div>
         <nav className="mt-4 flex-1 space-y-1 overflow-y-auto px-3">
