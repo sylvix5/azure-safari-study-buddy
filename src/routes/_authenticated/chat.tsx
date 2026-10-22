@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Outlet, useNavigate, useParams } from "@tanstack/react-router";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
-import { LogOut, MessageSquareText, Plus, Trash2 } from "lucide-react";
+import { GraduationCap, LogOut, MessageSquareText, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { createThread, threadsQuery } from "@/lib/threads";
@@ -102,11 +102,16 @@ function ChatLayout() {
         </button>
       </aside>
       <main className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center justify-between border-b px-4 py-2 md:hidden">
+        <div className="flex items-center justify-between gap-3 border-b px-4 py-2 md:hidden">
           <span className="font-display font-bold">Mwalimu Cloud</span>
-          <Button size="sm" variant="outline" onClick={newTopic}>
-            <Plus className="h-4 w-4" /> New
-          </Button>
+          <div className="flex gap-2">
+            <Button asChild size="sm" variant="outline">
+              <Link to="/practice">Practice</Link>
+            </Button>
+            <Button size="sm" variant="outline" onClick={newTopic}>
+              <Plus className="h-4 w-4" /> New
+            </Button>
+          </div>
         </div>
         <Outlet />
       </main>
