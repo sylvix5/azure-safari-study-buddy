@@ -1,2 +1,1 @@
-- [x] Answer GitHub/download question (answered in chat)
-- [x] Verify chat flow end-to-end (signup, thread, AI reply, reload)
+- [x] Add a practice-questions section (quiz page with AZ-900-style questions, instant feedback) — verified

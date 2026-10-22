@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Outlet, useNavigate, useParams } from "@tanstack/react-router";
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
-import { LogOut, MessageSquareText, Plus, Trash2 } from "lucide-react";
+import { GraduationCap, LogOut, MessageSquareText, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { createThread, threadsQuery } from "@/lib/threads";
@@ -61,9 +61,14 @@ function ChatLayout() {
           <img src={logo} alt="" width={36} height={36} className="h-9 w-9 rounded-full bg-sidebar-foreground p-1" />
           <span className="font-display text-lg font-bold">Mwalimu Cloud</span>
         </div>
-        <div className="px-3">
+        <div className="grid grid-cols-[1fr_auto] gap-2 px-3">
           <Button onClick={newTopic} className="w-full justify-start gap-2 bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">
             <Plus className="h-4 w-4" /> New topic
+          </Button>
+          <Button asChild variant="outline" className="justify-start gap-2 border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent/60">
+            <Link to="/practice">
+              <GraduationCap className="h-4 w-4" /> Practice
+            </Link>
           </Button>
         </div>
         <nav className="mt-4 flex-1 space-y-1 overflow-y-auto px-3">
@@ -97,11 +102,16 @@ function ChatLayout() {
         </button>
       </aside>
       <main className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center justify-between border-b px-4 py-2 md:hidden">
+        <div className="flex items-center justify-between gap-3 border-b px-4 py-2 md:hidden">
           <span className="font-display font-bold">Mwalimu Cloud</span>
-          <Button size="sm" variant="outline" onClick={newTopic}>
-            <Plus className="h-4 w-4" /> New
-          </Button>
+          <div className="flex gap-2">
+            <Button asChild size="sm" variant="outline">
+              <Link to="/practice">Practice</Link>
+            </Button>
+            <Button size="sm" variant="outline" onClick={newTopic}>
+              <Plus className="h-4 w-4" /> New
+            </Button>
+          </div>
         </div>
         <Outlet />
       </main>
